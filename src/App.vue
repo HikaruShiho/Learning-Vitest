@@ -1,5 +1,13 @@
 <script setup lang="ts">
-import HelloWorld from './components/HelloWorld.vue'
+import { onMounted } from 'vue';
+
+onMounted(async () => {
+  const res  = await fetch('user', {
+    method: 'GET',
+  });
+  console.log(await res.json());
+  
+});
 </script>
 
 <template>
@@ -11,7 +19,6 @@ import HelloWorld from './components/HelloWorld.vue'
       <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
     </a>
   </div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
 
 <style scoped>
