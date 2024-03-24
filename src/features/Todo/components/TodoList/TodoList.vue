@@ -1,5 +1,4 @@
 <template>
-  <div :class="styles.title">TODO一覧</div>
   <div :class="styles.todoList" v-if="todos.length">
     <Card
       v-for="todo in todos"

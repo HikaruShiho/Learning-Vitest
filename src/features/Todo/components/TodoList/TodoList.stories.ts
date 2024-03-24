@@ -20,11 +20,11 @@ export const Default: Story = {
       { id: 2, title: '本を読む', isDone: true },
       { id: 3, title: '洗濯をする', isDone: false },
     ],
-  }
+  },
 };
+
 export const TodoEmpty: Story = {
   args: {
     todos: [],
   }
 };
-

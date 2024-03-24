@@ -1,4 +1,7 @@
 import type { Preview } from "@storybook/vue3";
+import { initialize, mswLoader } from 'msw-storybook-addon';
+
+initialize();
 
 const preview: Preview = {
   parameters: {
@@ -12,6 +15,7 @@ const preview: Preview = {
       toc: true, //目次表示
     },
   },
+  loaders: [mswLoader],
 };
 
 export default preview;

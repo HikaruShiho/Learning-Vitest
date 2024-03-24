@@ -1,4 +1,11 @@
 # MSW
+https://mswjs.io/（2.x）
+
+https://v1.mswjs.io/（1.x）
+
+## 注意事項
+- Storybookでmsw-storybook-addonを使用する場合は、`1.x`を使用しないと動作しない模様（2024/03/22現在）
+
 ## 設定
 https://mswjs.io/docs/getting-started
 

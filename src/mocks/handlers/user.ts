@@ -1,20 +1,38 @@
-import { http, HttpResponse } from 'msw'
+// v1.xの書き方
+import { rest } from 'msw'
+
+// v2.xの書き方
+// import { http, HttpResponse } from 'msw'
 
 export const handlers = [
-  http.get('/user/:id', ({ params }) => {
-    const { id } = params
+  rest.get('http://localhost:5173/user/:id', (req, res, ctx) => {
+    const { id } = req.params;
+    if (id === "noId") throw new Error("User not found.");
 
-    if (id === "noId") return new HttpResponse("User not found.", { status: 500 });
+    return res(
+      ctx.status(200),
+      ctx.json({ firstName: 'John', lastName: 'Maverick' })
+    );
 
-    return HttpResponse.json({
-      firstName: 'John',
-      lastName: 'Maverick',
-    })
+    // v2.xの書き方
+    // return HttpResponse.json({
+    //   firstName: 'John',
+    //   lastName: 'Maverick',
+    // });
   }),
-  http.get('/users', () => {
-    return HttpResponse.json([
-      { firstName: 'John', lastName: 'Maverick' },
-      { firstName: 'Alex', lastName: 'Black' },
-    ])
+  rest.get('http://localhost:5173/users', (_, res, ctx) => {
+    return res(
+      ctx.status(403),
+      ctx.json([
+        { firstName: 'John', lastName: 'Maverick' },
+        { firstName: 'Alex', lastName: 'Black' },
+      ])
+    );
+
+    // v2.xの書き方
+    // return HttpResponse.json([
+    //   { firstName: 'John', lastName: 'Maverick' },
+    //   { firstName: 'Alex', lastName: 'Black' },
+    // ])
   }),
 ]
