@@ -1,0 +1,15 @@
+input {
+  border: 2px solid #e6e6e6;
+  padding: 0rem 0.6rem;
+  line-height: 36px;
+  border-radius: 10px;
+  &::placeholder {
+    color: #c8c8c8;
+  }
+}
+
+.message {
+  color: red;
+  font-size: 0.8rem;
+  margin-top: 0.2rem;
+}
