@@ -1,0 +1,25 @@
+version: '3.8'
+networks:
+  frontend:
+    name: "${COMPOSE_PROJECT_NAME}"
+services:
+  node:
+    container_name: "node"
+    image: "node:8"
+    user: "node"
+    working_dir: /home/node/app
+    environment:
+      - NODE_ENV=development
+    volumes:
+      - ../:/home/node/app
+      - node_modules:/home/node/app/node_modules
+    expose:
+      - "5173"
+    ports:
+      - "5173:5173"
+    networks:
+      frontend:
+    stdin_open: true
+    tty: true
+volumes:
+  node_modules:
