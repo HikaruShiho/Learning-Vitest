@@ -5,10 +5,9 @@ import { rest } from 'msw'
 // import { http, HttpResponse } from 'msw'
 
 export const handlers = [
-  rest.get('http://localhost:5173/user/:id', (req, res, ctx) => {
-    const { id } = req.params;
-    if (id === "noId") throw new Error("User not found.");
+  rest.get('http://localhost:5173/user/:id', (_, res, ctx) => {
 
+    // v1.xの書き方
     return res(
       ctx.status(200),
       ctx.json({ firstName: 'John', lastName: 'Maverick' })
@@ -21,8 +20,10 @@ export const handlers = [
     // });
   }),
   rest.get('http://localhost:5173/users', (_, res, ctx) => {
+
+    // v1.xの書き方
     return res(
-      ctx.status(403),
+      ctx.status(200),
       ctx.json([
         { firstName: 'John', lastName: 'Maverick' },
         { firstName: 'Alex', lastName: 'Black' },
